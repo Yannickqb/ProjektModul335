@@ -1,15 +1,16 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Vibration } from 'react-native';
 
 const Events = ({ onEventPress }) => {
-  const events = [
-    { id: 1, title: 'Game', date: '2023-07-10' },
-    { id: 2, title: 'Training', date: '2023-07-12' },
-  ];
-
-  const handleEventPress = (event) => {
-    onEventPress(event);
-  };
+    const events = [
+      { id: 1, title: 'Game', date: '2023-07-10' },
+      { id: 2, title: 'Training', date: '2023-07-12' },
+    ];
+  
+    const handleEventPress = (event) => {
+      onEventPress(event.title); // Pass the event title
+      Vibration.vibrate(500);
+    };
 
   return (
     <View style={styles.container}>
@@ -37,17 +38,23 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     marginBottom: 10,
-    textAlign: 'center'
+    textAlign: 'center',
+    color: 'white'
   },
   eventContainer: {
-    backgroundColor: '#f5f5f5',
+    backgroundColor: 'black',
     padding: 10,
     borderRadius: 5,
     marginBottom: 10,
+    borderStyle: 'solid',
+    borderColor: '#ECF500',
+    borderWidth: 2,
+    color: 'white'
   },
   eventTitle: {
     fontSize: 16,
     fontWeight: 'bold',
+    color: 'white'
   },
   eventDate: {
     fontSize: 14,

@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, ImageBackground, Image, StyleSheet, Linking } from 'react-native';
 import { Pedometer } from 'expo-sensors';
-import { Device } from 'expo-device';
-
+import { Device, Notifications } from 'expo';
 
 const Profile = () => {
   const [currentStepCount, setCurrentStepCount] = useState(0);
@@ -25,6 +24,7 @@ const Profile = () => {
         Pedometer.watchStepCount(result => {
           if (isMounted) {
             setCurrentStepCount(result.steps);
+            checkStepCount(result.steps);
           }
         });
       }
@@ -36,6 +36,23 @@ const Profile = () => {
       isMounted = false;
     };
   }, []);
+
+  const checkStepCount = (steps) => {
+    if (steps >= 50) {
+      sendNotification();
+    }
+  };
+
+  const sendNotification = async () => {
+    await Notifications.scheduleNotificationAsync({
+      content: {
+        title: 'Step Milestone Reached!',
+        body: 'Congratulations! You have reached 500 steps.',
+        data: { steps: currentStepCount },
+      },
+      trigger: null, // Send immediately
+    });
+  };
 
   return (
     <View style={styles.container}>
@@ -52,7 +69,7 @@ const Profile = () => {
           />
           <Text style={styles.name}>Yannick Ledermann</Text>
           <Text style={styles.position}>QB</Text>
-          <Text style={styles.stepCount}>Steps taken in the last 24 hours: {currentStepCount}</Text>
+          <Text style={styles.stepCount}>Steps: {currentStepCount}</Text>
         </View>
       </ImageBackground>
     </View>

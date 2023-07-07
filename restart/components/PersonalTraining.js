@@ -2,27 +2,27 @@ import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import PersonalTrainingDetails from './PersonalTrainingDetails';
 
-const PersonalTraining = ({ onPersonalTrainingPress }) => {
-  const personalTrainings = [
-    { id: 1, title: 'Game', date: '2023-07-10' },
-    { id: 2, title: 'Training', date: '2023-07-12' },
-  ];
-
-  const handlePersonalTrainingPress = (personalTraining) => {
-    onPersonalTrainingPress(personalTraining);
-  };
+const PersonalTraining = ({ onEventPress }) => {
+    const events = [
+      { id: 1, title: 'Game', date: '2023-07-10' },
+      { id: 2, title: 'Training', date: '2023-07-12' },
+    ];
+  
+    const handleEventPress = (event) => {
+      onEventPress(event.title); // Pass the event title
+    };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.sectionTitle}>Next Personal Trainings</Text>
-      {personalTrainings.map((personalTraining) => (
+      <Text style={styles.sectionTitle}>Next Events</Text>
+      {events.map((event) => (
         <TouchableOpacity
-          key={personalTraining.id}
-          style={styles.personalTrainingContainer}
-          onPress={() => handlePersonalTrainingPress(personalTraining)}
+          key={event.id}
+          style={styles.eventContainer}
+          onPress={() => handleEventPress(event)}
         >
-          <Text style={styles.personalTrainingTitle}>{personalTraining.title}</Text>
-          <Text style={styles.personalTrainingDate}>{personalTraining.date}</Text>
+          <Text style={styles.eventTitle}>{event.title}</Text>
+          <Text style={styles.eventDate}>{event.date}</Text>
         </TouchableOpacity>
       ))}
     </View>
@@ -38,19 +38,25 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     marginBottom: 10,
-    textAlign: 'center'
+    textAlign: 'center',
+    color: 'white'
   },
-  personalTrainingContainer: {
-    backgroundColor: '#f5f5f5',
+  eventContainer: {
+    backgroundColor: 'black',
     padding: 10,
     borderRadius: 5,
     marginBottom: 10,
+    borderStyle: 'solid',
+    borderColor: '#ECF500',
+    borderWidth: 2,
+    color: 'white'
   },
-  personalTrainingTitle: {
+  eventTitle: {
     fontSize: 16,
     fontWeight: 'bold',
+    color: 'white'
   },
-  personalTrainingDate: {
+  eventDate: {
     fontSize: 14,
     color: 'gray',
   },

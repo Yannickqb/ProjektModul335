@@ -1,0 +1,21 @@
+{
+    "event": {
+      "title": "Game",
+      "date": "2023-07-08",
+      "startingOffense": [
+        "Yannick Ledermann QB",
+        "Player 2 WR",
+        "Player 3 WR",
+        "Player 4 WR",
+        "Player 5 RB",
+        "Player 6 RB",
+        "Player 7 OL"
+      ],
+      "startingDefense": [
+        "Player 8",
+        "Player 9",
+        "Player 10"
+      ]
+    }
+  }
+  

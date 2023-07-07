@@ -1,39 +1,36 @@
 import React from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
+import eventData from './eventData.json';
 
-const EventDetails = ({ onBackPress, event, updateEvent }) => {
+
+const EventDetails = ({ onBackPress, updateEvent, eventTitle }) => {
   const handleEventUpdate = () => {
-    const updatedEvent = { ...event, completed: 1 };
+    const updatedEvent = { ...eventData.event, completed: 1 };
     updateEvent(updatedEvent);
   };
 
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.headerText}>sharktank</Text>
+        <Text style={styles.headerText}>{eventTitle}</Text>
       </View>
       <View style={styles.content}>
         <Text style={styles.details}>Event Details</Text>
-        <Text style={styles.description}>Event Type: {event.title}</Text>
-        <Text style={styles.description}>Date: {event.date}</Text>
+        <Text style={styles.description}>Event Type: {eventData.event.title}</Text>
+        <Text style={styles.description}>Date: {eventData.event.date}</Text>
 
         <Text style={styles.tableHeader}>Starting Offense</Text>
         <View style={styles.table}>
-          <Text style={styles.tableRow}>Player 1</Text>
-          <Text style={styles.tableRow}>Player 2</Text>
-          <Text style={styles.tableRow}>Player 3</Text>
-          <Text style={styles.tableRow}>Player 3</Text>
-          <Text style={styles.tableRow}>Player 3</Text>
-          <Text style={styles.tableRow}>Player 3</Text>
-          <Text style={styles.tableRow}>Player 3</Text>
-
+          {eventData.event.startingOffense.map((player, index) => (
+            <Text key={index} style={styles.tableRow}>{player}</Text>
+          ))}
         </View>
 
         <Text style={styles.tableHeader}>Starting Defense</Text>
         <View style={styles.table}>
-          <Text style={styles.tableRow}>Player 4</Text>
-          <Text style={styles.tableRow}>Player 5</Text>
-          <Text style={styles.tableRow}>Player 6</Text>
+          {eventData.event.startingDefense.map((player, index) => (
+            <Text key={index} style={styles.tableRow}>{player}</Text>
+          ))}
         </View>
 
         <Button title="Mark Completed" onPress={handleEventUpdate} />
@@ -52,7 +49,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'black',
     padding: 20,
     paddingTop: 50,
-    height: 100,
   },
   headerText: {
     color: 'white',

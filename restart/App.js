@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View, ScrollView, Button } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, Button, Vibration } from 'react-native';
 import Profile from './components/Profile';
 import Events from './components/Events';
 import EventDetails from './components/EventDetails.js';
@@ -18,8 +18,23 @@ export default function App() {
 
   const handlePersonalTrainingEvent = () => {
     setCurrentPage('personalTrainingDetails');
+    Vibration.vibrate(500);
   };
 
+  const handlePersonalTrainingPress = () => {
+    const personalTraining = {
+      title: 'Game',
+      date: '2023-07-10',
+      exercises: [
+        { name: 'Exercise 1', reps: '10 reps' },
+        { name: 'Exercise 2', reps: '12 reps' },
+        { name: 'Exercise 3', reps: '8 reps' },
+      ],
+    };
+    // Code to open personal training details using personalTraining data
+    // For example, you can navigate to a new screen or show a modal with the details
+    console.log('Opening personal training details:', personalTraining);
+  };
   const handleBackPress = () => {
     setCurrentPage('landing');
     setEventDetails(null);
@@ -36,9 +51,8 @@ export default function App() {
             <Profile />
             <Events onEventPress={handleEventPress} />
             <Text style={styles.sectionTitle}>Personal Training</Text>
-            <PersonalTraining
-              onPersonalTrainingEvent={handlePersonalTrainingEvent}
-            />
+            <PersonalTraining onPersonalTrainingPress={handlePersonalTrainingPress} />
+
           </View>
         </View>
       );
@@ -98,7 +112,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'black',
     padding: 20,
     paddingTop: 50,
-    height: 100,
   },
   headerText: {
     color: 'white',
@@ -108,7 +121,7 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
-    backgroundColor: 'gray',
+    backgroundColor: 'black',
   },
   sectionTitle: {
     fontSize: 20,
