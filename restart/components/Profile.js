@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, ImageBackground, Image, StyleSheet } from 'react-native';
+import { View, Text, ImageBackground, Image, StyleSheet, Linking } from 'react-native';
 import { Pedometer } from 'expo-sensors';
+import { Device } from 'expo-device';
+
 
 const Profile = () => {
   const [currentStepCount, setCurrentStepCount] = useState(0);
@@ -46,6 +48,7 @@ const Profile = () => {
           <Image
             source={require('../assets/pb.png')}
             style={styles.profilePicture}
+            onPress={() => Linking.openURL('./Stats.js')}
           />
           <Text style={styles.name}>Yannick Ledermann</Text>
           <Text style={styles.position}>QB</Text>
