@@ -1,0 +1,37 @@
+{
+    "events": [
+      {
+        "id": 1,
+        "title": "Game",
+        "date": "2023-07-10",
+        "completed": 0
+      },
+      {
+        "id": 2,
+        "title": "Training",
+        "date": "2023-07-12",
+        "completed": 0
+      }
+    ],
+    "personalTraining": [
+      {
+        "id": 1,
+        "title": "Push Ups",
+        "date": "2023-07-10",
+        "completed": false,
+        "exercises": [
+          {
+            "id": 1,
+            "exercise": "Exercise 1",
+            "reps": 10
+          },
+          {
+            "id": 2,
+            "exercise": "Exercise 2",
+            "reps": 12
+          }
+        ]
+      }
+    ]
+  }
+  
