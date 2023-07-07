@@ -1,0 +1,55 @@
+{
+    "events": [
+      {
+        "id": 1,
+        "title": "Push Ups",
+        "date": "2023-07-10",
+        "completed": false,
+        "exercises": [
+          {
+            "id": 1,
+            "exercise": "Exercise 1",
+            "reps": 10
+          },
+          {
+            "id": 2,
+            "exercise": "Exercise 2",
+            "reps": 12
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Gym",
+        "date": "2023-07-12",
+        "completed": false,
+        "exercises": [
+          {
+            "id": 3,
+            "exercise": "Exercise 3",
+            "reps": 8
+          },
+          {
+            "id": 4,
+            "exercise": "Exercise 4",
+            "reps": 15
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "title": "Gym",
+        "date": "2023-07-12",
+        "completed": false,
+        "exercises": []
+      },
+      {
+        "id": 4,
+        "title": "Gym",
+        "date": "2023-07-12",
+        "completed": false,
+        "exercises": []
+      }
+    ]
+  }
+  
